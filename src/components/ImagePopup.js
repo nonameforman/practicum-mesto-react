@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Imagepopup = (props) => {
+const ImagePopup = (props) => {
     if (!props.card) return null;
     return (
         <div className={`popup popup_pic-fullscreen ${props.card && "popup_opened"}`} id="popup_pic-fullscreen">
@@ -12,4 +12,4 @@ const Imagepopup = (props) => {
     );
 }
 
-export default Imagepopup;
+export default ImagePopup;

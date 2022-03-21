@@ -3,7 +3,7 @@ import Footer from './Footer.js';
 import Main from './Main.js';
 import Header from './Header.js';
 import PopupWithForm from './PopupWithForm.js';
-import Imagepopup from './ImagePopup.js';
+import ImagePopup from './ImagePopup.js';
 
 function App() {
 
@@ -62,7 +62,7 @@ function App() {
         <PopupWithForm name="confirm-delition" title="Вы уверены?"> {/*подтверждение удаления*/}
             <button className="popup__button" id="delete-button" type="submit">Да</button>
         </PopupWithForm>
-        <Imagepopup card={selectedCard} onClose={closeAllPopups}/>
+        <ImagePopup card={selectedCard} onClose={closeAllPopups}/>
     </div>
   ); 
 }

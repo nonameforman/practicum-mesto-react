@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Popupwithform = (props) => {
+const PopupWithForm = (props) => {
     if(props.isOpen) {
         document.addEventListener("keydown", (evt) => {
             if (evt.key === "Escape") {
@@ -24,4 +24,4 @@ const Popupwithform = (props) => {
     );
 }
 
-export default Popupwithform;
+export default PopupWithForm;
