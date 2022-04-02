@@ -25,6 +25,14 @@ function App() {
         .catch((err) => {
             console.log(`Ошибка при получении данных профиля ${err}`)
         })
+  },[]);
+
+  useEffect(() => {
+    api.getCards()
+        .then(res => setCards(res))
+        .catch((err) => {
+            console.log(`Ошибка при получении карточек с сервера ${err}`)
+        })
 },[]);
 
   const handleEditAvatarClick = () => {
@@ -74,7 +82,7 @@ function App() {
     <CurrentUserContext.Provider value={currentUser}>
       <div className="page">
           <Header />
-          <Main onEditProfile={handleEditProfileClick} onEditAvatar={handleEditAvatarClick} onAddPlace={handleAddPlaceClick} onCardClick={handleCardClick} onCardLike={handleCardLike}/>
+          <Main onEditProfile={handleEditProfileClick} onEditAvatar={handleEditAvatarClick} onAddPlace={handleAddPlaceClick} onCardClick={handleCardClick} onCardLike={handleCardLike} cards={cards}/>
           <Footer />
           <PopupWithForm isOpen={isEditProfilePopupOpen} onClose={closeAllPopups} name="edit-profile" title="Редактировать профиль"> {/*редактирование профиля*/}
               <input className="popup__input" id="input_name" type="text" name="name" placeholder="Ваше имя" required minLength="2" maxLength="40"/>

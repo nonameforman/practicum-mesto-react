@@ -3,18 +3,11 @@ import api from '../utils/api.js'
 import Card from './Card.js'
 import CurrentUserContext from '../contexts/CurrentUserContext.js'
 
-const Main = ({onEditProfile, onEditAvatar, onAddPlace, onCardClick, onCardLike}) => {
-    const [cards, setCards] = useState([]);
+const Main = ({onEditProfile, onEditAvatar, onAddPlace, onCardClick, onCardLike, cards}) => {
 
     const userContext = useContext(CurrentUserContext);
 
-    useEffect(() => {
-        api.getCards()
-            .then(res => setCards(res))
-            .catch((err) => {
-                console.log(`Ошибка при получении карточек с сервера ${err}`)
-            })
-    },[]);
+
 
     return (
         <main className="content">
