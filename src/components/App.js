@@ -14,7 +14,6 @@ function App() {
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
   const [selectedCard, setSelectedCard] = useState(null);
   const [cards, setCards] = useState([]);
-
   const [currentUser, setCurrentUser] = useState({});
 
   useEffect(() => {
@@ -33,7 +32,7 @@ function App() {
         .catch((err) => {
             console.log(`Ошибка при получении карточек с сервера ${err}`)
         })
-},[]);
+  },[]);
 
   const handleEditAvatarClick = () => {
     setIsEditAvatarPopupOpen(true);
@@ -76,13 +75,23 @@ function App() {
       .catch((err) => {
         console.log(`Ошибка при лайке карточки ${err}`)
       })
-}
+  }
+
+  const handleCardDelete = (card) => {
+    api.removeCard(card._id)
+    .then(() => {
+      setCards((state) => state.filter((c) => c._id !== card._id))
+    })
+    .catch((err) => {
+      console.log(`Ошибка при удалении карточки ${err}`)
+    })
+  }
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="page">
           <Header />
-          <Main onEditProfile={handleEditProfileClick} onEditAvatar={handleEditAvatarClick} onAddPlace={handleAddPlaceClick} onCardClick={handleCardClick} onCardLike={handleCardLike} cards={cards}/>
+          <Main onEditProfile={handleEditProfileClick} onEditAvatar={handleEditAvatarClick} onAddPlace={handleAddPlaceClick} onCardClick={handleCardClick} onCardLike={handleCardLike} onCardDelete={handleCardDelete} cards={cards}/>
           <Footer />
           <PopupWithForm isOpen={isEditProfilePopupOpen} onClose={closeAllPopups} name="edit-profile" title="Редактировать профиль"> {/*редактирование профиля*/}
               <input className="popup__input" id="input_name" type="text" name="name" placeholder="Ваше имя" required minLength="2" maxLength="40"/>

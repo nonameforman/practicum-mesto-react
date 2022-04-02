@@ -3,11 +3,9 @@ import api from '../utils/api.js'
 import Card from './Card.js'
 import CurrentUserContext from '../contexts/CurrentUserContext.js'
 
-const Main = ({onEditProfile, onEditAvatar, onAddPlace, onCardClick, onCardLike, cards}) => {
+const Main = ({onEditProfile, onEditAvatar, onAddPlace, onCardClick, onCardLike, onCardDelete, cards}) => {
 
     const userContext = useContext(CurrentUserContext);
-
-
 
     return (
         <main className="content">
@@ -26,7 +24,7 @@ const Main = ({onEditProfile, onEditAvatar, onAddPlace, onCardClick, onCardLike,
             </section>
             <section className="elements">
                 <ul className="elements__container">
-                    {cards.map(card => <Card card={card} onCardClick={onCardClick} onCardLike={onCardLike} key={card._id}/>)}
+                    {cards.map(card => <Card card={card} onCardClick={onCardClick} onCardLike={onCardLike} onCardDelete={onCardDelete} key={card._id}/>)}
                 </ul>
             </section>
         </main>
