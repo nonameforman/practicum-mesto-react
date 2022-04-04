@@ -1,13 +1,6 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 
-const PopupWithForm = ({isOpen, onClose, name, title, children}) => {
-    if(isOpen) {
-        document.addEventListener("keydown", (evt) => {
-            if (evt.key === "Escape") {
-                onClose();
-            }
-        });
-    }
+const PopupWithForm = ({isOpen, onClose, name, title, children, onSubmit}) => {
 
     return (
         <div className={`popup ${isOpen && "popup_opened"}`} id={`popup_${name}`}>
@@ -15,7 +8,7 @@ const PopupWithForm = ({isOpen, onClose, name, title, children}) => {
                 <h2 className="popup__title">
                     {title}
                 </h2>
-                <form className="popup__form" id={`popup__form_${name}`} name={name}>
+                <form className="popup__form" id={`popup__form_${name}`} name={name} onSubmit={onSubmit}>
                     {children}
                 </form>
             </div>
