@@ -24,7 +24,7 @@ const AddPlacePopup = ({isOpen, onClose, onAddPlace}) => {
     useEffect(() => {
         setPlace('');
         setLink('');
-    }, []); 
+    }, [isOpen]); 
 
     return (
         <PopupWithForm isOpen={isOpen} onClose={onClose} onSubmit={handleSubmit} name="add-card" title="Новое место">

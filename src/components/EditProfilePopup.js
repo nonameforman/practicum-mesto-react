@@ -26,13 +26,13 @@ const EditprofilePopup = ({isOpen, onClose, onUpdateUser}) => {
     useEffect(() => {
         setName(userContext.name);
         setDescription(userContext.about);
-    }, [userContext]); 
+    }, [userContext, isOpen]); 
 
     return (
         <PopupWithForm isOpen={isOpen} onClose={onClose} onSubmit={handleSubmit} name="edit-profile" title="Редактировать профиль">
-              <input value={name} onChange={handleChangeName} className="popup__input" id="input_name" type="text" name="name" placeholder="Ваше имя" required minLength="2" maxLength="40"/>
+              <input value={name || ''} onChange={handleChangeName} className="popup__input" id="input_name" type="text" name="name" placeholder="Ваше имя" required minLength="2" maxLength="40"/>
               <span className="popup__error" id="input_name-error"></span>
-              <input value={description} onChange={handleChangeDescription} className="popup__input" id="input_about" type="text" name="about" placeholder="Расскажите о себе" required minLength="2" maxLength="200"/>
+              <input value={description || ''} onChange={handleChangeDescription} className="popup__input" id="input_about" type="text" name="about" placeholder="Расскажите о себе" required minLength="2" maxLength="200"/>
               <span className="popup__error" id="input_about-error"></span>
               <button className="popup__button" id="save-button" type="submit">Сохранить</button>
           </PopupWithForm>
